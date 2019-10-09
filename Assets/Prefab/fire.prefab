@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2476458246124189127}
   - component: {fileID: 874617938945949776}
   - component: {fileID: 7639456093487704643}
-  - component: {fileID: 8130244346438993929}
   - component: {fileID: 7281678664093137924}
   m_Layer: 0
   m_Name: fire
@@ -98,7 +97,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -131,21 +130,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9, y: 12.48}
   m_EdgeRadius: 0
---- !u!114 &8130244346438993929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934769905278851607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1230495c9d61b41b375103de634b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  damage: 1
-  monstr: {fileID: 0}
 --- !u!114 &7281678664093137924
 MonoBehaviour:
   m_ObjectHideFlags: 0
