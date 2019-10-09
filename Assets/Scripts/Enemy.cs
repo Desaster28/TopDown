@@ -8,12 +8,17 @@ public class Enemy : MonoBehaviour
     public float speed;
     private Transform playerPos;
     private PlayerControll player;
+    public int health = 2;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
+    public void takeDamage(int i)
+    {
+        if (health > 0) { health-=i; Debug.Log(health); }
+        else { Destroy(gameObject); }
+    }
     void Update()
     {
         transform.position = Vector2.MoveTowards( transform.position, playerPos.position , speed*Time.deltaTime);
