@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
             Debug.Log(player.health);
             Destroy(gameObject);
         }
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Fire"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
