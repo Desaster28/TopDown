@@ -8,6 +8,8 @@ public class PlayerControll : MonoBehaviour
     public int health = 5;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
+    public Camera cam;
+    Vector2 mousePos;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +23,15 @@ public class PlayerControll : MonoBehaviour
     {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
-
+    
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        Vector2 lookDir = mousePos - rb.position;
+        float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
+        rb.rotation = rotate;
     }
 }
