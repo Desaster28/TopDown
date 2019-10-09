@@ -275,7 +275,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4934769905278851607, guid: 4bb6cfed520e04b448b24aacf83ce09f,
     type: 3}
   sound: {fileID: 616945729}
-  bulletForce: 1
+  bulletForce: 20
 --- !u!82 &616945729
 AudioSource:
   m_ObjectHideFlags: 0
