@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class PlayerControll : MonoBehaviour
         moveVelocity = moveInput.normalized * speed;
     
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if(health < 1)
+        {
+            Destroy(gameObject);
+            Debug.Log("You Loose");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void FixedUpdate()
