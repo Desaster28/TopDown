@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool esc = false;
     public GameObject PauseMenuUI;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void LoadMenu()
     {
+
         Time.timeScale = 1f;
         esc = false;
         SceneManager.LoadScene("Menu");
