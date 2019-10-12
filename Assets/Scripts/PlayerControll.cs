@@ -10,7 +10,7 @@ public class PlayerControll : MonoBehaviour
     private Vector2 moveVelocity;
     public Camera cam;
     Vector2 mousePos;
-    public int PlayerLvl,PlayerExp,maxLvl;
+    public int PlayerLvl,PlayerExp,maxLvl; //MIGHT BE CHANGED IN LVLUP SCRIPT !!!! 
 
     // Start is called before the first frame update
     void Start()
