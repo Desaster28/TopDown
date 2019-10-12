@@ -10,6 +10,7 @@ public class PlayerControll : MonoBehaviour
     private Vector2 moveVelocity;
     public Camera cam;
     Vector2 mousePos;
+    public int PlayerLvl,PlayerExp,maxLvl;
 
     // Start is called before the first frame update
     void Start()
