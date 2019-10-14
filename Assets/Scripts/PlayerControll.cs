@@ -18,7 +18,12 @@ public class PlayerControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
+    public void damageIntake(int i)
+    {
+        Debug.Log(health);
+        health -= i;
 
+    }
     // Update is called once per frame
     void Update()
     {

@@ -14,11 +14,11 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-    public void takeDamage(int i)
-    {
-        if (health > 0) { health-=i; Debug.Log(health); }
-        else { Destroy(gameObject); }
-    }
+  //  public void takeDamage(int i)
+   // {
+   //     if (health > 0) { health-=i; Debug.Log(health); }
+   //     else { Destroy(gameObject); }
+   // }
     void Update()
     {
         transform.position = Vector2.MoveTowards( transform.position, playerPos.position , speed*Time.deltaTime);
@@ -27,14 +27,22 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.health--;
-            Debug.Log(player.health);
+            player.damageIntake(1);
             Destroy(gameObject);
         }
         if (other.CompareTag("Fire"))
         {
             Destroy(other.gameObject);
-            Destroy(gameObject);
+            if (health < 1)
+            {
+                Destroy(gameObject);
+               
+            }
+            else {
+                health--;
+                
+            }
+            
         }
     }
 }
