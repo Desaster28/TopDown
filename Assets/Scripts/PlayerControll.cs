@@ -11,6 +11,7 @@ public class PlayerControll : MonoBehaviour
     public Camera cam;
     Vector2 mousePos;
     public int PlayerLvl,PlayerExp,maxLvl; //MIGHT BE CHANGED IN LVLUP SCRIPT !!!! 
+    public GameObject deathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (health < 1)
         {
-
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
         }
         else
         {
