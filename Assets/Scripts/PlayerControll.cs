@@ -20,8 +20,15 @@ public class PlayerControll : MonoBehaviour
     }
     public void damageIntake(int i)
     {
-        Debug.Log(health);
-        health -= i;
+        if (health < 1)
+        {
+
+        }
+        else
+        {
+            Debug.Log(health);
+            health -= i;
+        }
 
     }
     // Update is called once per frame
