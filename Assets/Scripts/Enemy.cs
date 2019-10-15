@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private Transform playerPos;
     private PlayerControll player;
     public int health = 2;
+    public GameObject deathEffect;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
@@ -25,24 +26,29 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.CompareTag("Player"))
         {
             player.damageIntake(1);
-            Destroy(gameObject);
+            KillCurentEnemy();
         }
         if (other.CompareTag("Fire"))
         {
+            health--;
             Destroy(other.gameObject);
             if (health < 1)
             {
-                Destroy(gameObject);
-               
+                KillCurentEnemy();     
+
             }
-            else {
-                health--;
-                
-            }
+            else{     }
             
         }
+    }
+
+    private void KillCurentEnemy()
+    {
+        Destroy(gameObject);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);  
     }
 }
