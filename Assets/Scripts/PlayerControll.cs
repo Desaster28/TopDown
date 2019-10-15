@@ -43,15 +43,7 @@ public class PlayerControll : MonoBehaviour
     
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-<<<<<<< HEAD
-        if(health < 1)
-        {
-            Destroy(gameObject);
-            Debug.Log("You Loose");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-=======
->>>>>>> DimaFeature
+
     }
 
     private void FixedUpdate()

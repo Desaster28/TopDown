@@ -35,14 +35,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Fire"))
         {
             health--;
-<<<<<<< HEAD
-            if(health < 1) 
-            {
-                
-                Destroy(gameObject);
-            }
-            Destroy(other.gameObject);
-=======
+
             Destroy(other.gameObject);
             if (health < 1)
             {
@@ -51,7 +44,7 @@ public class Enemy : MonoBehaviour
             }
             else{     }
             
->>>>>>> DimaFeature
+
         }
     }
 
