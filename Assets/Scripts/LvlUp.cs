@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LvlUp : MonoBehaviour
+public class LvlUp 
 {
 
     public int level;
@@ -12,21 +12,25 @@ public class LvlUp : MonoBehaviour
     public float x = 0.1f;
     public float y = 0.1f;
     public float z = 0.0f;
-    void Start()
+    public LvlUp()
     {
         level = 1;
         exp = 0;
         expRequired = 100;
     }
-    void Update()
-    {
-        Exp();
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            exp += 100;
-        }
-    }
-    void LevelUp()
+    
+    // void Update()
+    // {
+    //     Exp();
+    //     if (Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         exp += 100;
+    //     }
+    // }
+
+
+    
+    public void LevelUp()
     {
         level += 1;
         exp = 0;

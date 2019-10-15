@@ -14,6 +14,8 @@ public class PlayerControll : MonoBehaviour
     public int PlayerLvl,PlayerExp,maxLvl; //MIGHT BE CHANGED IN LVLUP SCRIPT !!!! 
     public GameObject deathEffect;
 
+    private LvlUp level = new LvlUp();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,12 +47,19 @@ public class PlayerControll : MonoBehaviour
 
 
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+         if (other.CompareTag("PickUp")){
+             level.LevelUp();
+         }
+        
+    }
     private void FixedUpdate()
     {
         if (Time.timeScale == 0)
             return;
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        //rb.velocity = moveVelocity;
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
         rb.rotation = rotate;

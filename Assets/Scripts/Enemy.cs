@@ -10,8 +10,12 @@ public class Enemy : MonoBehaviour
     private PlayerControll player;
     public int health = 2;
     public GameObject deathEffect;
+    private Rigidbody2D rbe;
+    public GameObject[] sprite;
+
     private void Start()
     {
+        rbe = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
@@ -29,6 +33,7 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            Debug.Log("SKADKASKDKASDKAKSDAKSDKASK");
             player.damageIntake(1);
             KillCurentEnemy();
         }
@@ -43,14 +48,27 @@ public class Enemy : MonoBehaviour
 
             }
             else{     }
-            
-
         }
     }
 
     private void KillCurentEnemy()
     {
+        SpawnArtifacts(rbe.position.x,rbe.position.y,1);
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);  
+       
+    }       
+    
+    public void SpawnArtifacts(float x, float y, int amount)
+    {
+       
+        Debug.Log("IM SPAWNED");
+        float xRange = x + Random.Range(-2f, 2f);
+        float yRange = y + Random.Range(-2f, 2f);
+        Vector2 spownPosition = new Vector2(xRange, yRange);
+        GameObject artifact =  Instantiate(sprite[Random.Range(0, sprite.Length - 1)], spownPosition, Quaternion.identity);
+        artifact.transform.localScale =  (artifact.transform.localScale + this.transform.localScale) / 5f;
+        Debug.Log("AFTER SPAWN");
     }
+
 }
