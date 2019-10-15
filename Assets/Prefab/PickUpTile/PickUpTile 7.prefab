@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 313056306681180205}
   - component: {fileID: 3684827806606679708}
   - component: {fileID: 6174967804674945104}
+  - component: {fileID: -2321938823806006064}
+  - component: {fileID: 3421387244754531414}
   m_Layer: 0
   m_Name: PickUpTile 7
   m_TagString: PickUp
@@ -120,3 +122,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!122 &-2321938823806006064
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603346615453014059}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255369
+  m_Size: 0.15
+--- !u!111 &3421387244754531414
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603346615453014059}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f3a5403eebf2aa345817bfea2331b194, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f3a5403eebf2aa345817bfea2331b194, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
