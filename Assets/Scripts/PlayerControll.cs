@@ -11,6 +11,8 @@ public class PlayerControll : MonoBehaviour
     private Vector2 moveVelocity;
     public Camera cam;
     Vector2 mousePos;
+    public int PlayerLvl,PlayerExp,maxLvl; //MIGHT BE CHANGED IN LVLUP SCRIPT !!!! 
+    public GameObject deathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -18,25 +20,44 @@ public class PlayerControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
+    public void damageIntake(int i)
+    {
+        if (health < 1)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log(health);
+            health -= i;
+        }
 
+    }
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
     
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
+<<<<<<< HEAD
         if(health < 1)
         {
             Destroy(gameObject);
             Debug.Log("You Loose");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+=======
+>>>>>>> DimaFeature
     }
 
     private void FixedUpdate()
     {
+        if (Time.timeScale == 0)
+            return;
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
