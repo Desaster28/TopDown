@@ -10,10 +10,14 @@ public class PlayerControll : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public Camera cam;
-    Vector2 mousePos;
-    public int PlayerLvl,PlayerExp,maxLvl; //MIGHT BE CHANGED IN LVLUP SCRIPT !!!! 
+    Vector2 mousePos;    
     public GameObject deathEffect;
 
+    [Header("Leveling")]
+    public int playerLevel = 1;
+    public int playerExp = 0;
+    public int expRequiredForLeveling = 10;
+    public int maxLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +53,15 @@ public class PlayerControll : MonoBehaviour
     {
          if (other.CompareTag("PickUp"))
          {
-             Debug.Log("Level up");
-         }
+            playerExp += 1;
+            if (expRequiredForLeveling == playerExp)
+            {
+                Debug.Log("Level up");
+                playerExp = 0;
+            }
+            
+             Destroy(other.gameObject);
+        }
         
     }
     private void FixedUpdate()

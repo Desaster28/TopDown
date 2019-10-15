@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
    // }
     void Update()
     {
-        transform.position = Vector2.MoveTowards( transform.position, playerPos.position , speed*Time.deltaTime);
+        transform.position = Vector2.MoveTowards( transform.position, playerPos.position , speed * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -45,9 +45,8 @@ public class Enemy : MonoBehaviour
             if (health < 1)
             {
                 KillCurentEnemy();     
-
             }
-            else{     }
+            else{}
         }
     }
 
@@ -60,9 +59,7 @@ public class Enemy : MonoBehaviour
     }       
     
     public void SpawnArtifacts(float x, float y, int amount)
-    {
-       
-        
+    {   
         float xRange = x + Random.Range(-2f, 2f);
         float yRange = y + Random.Range(-2f, 2f);
         Vector2 spownPosition = new Vector2(xRange, yRange);
