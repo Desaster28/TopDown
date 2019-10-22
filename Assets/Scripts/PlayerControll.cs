@@ -12,15 +12,12 @@ public class PlayerControll : MonoBehaviour
     public Camera cam;
     Vector2 mousePos;    
     public GameObject deathEffect;
-    public Canvas Healthbar;
-    public Sprite LifeIsTrue;
-    public Sprite LifeIsFalse;
     [Header("Leveling")]
     public int playerLevel = 1;
     public int playerExp = 0;
     public int expRequiredForLeveling = 10;
     public int maxLevel;
-
+    public GameManager MyGameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +52,7 @@ public class PlayerControll : MonoBehaviour
     {
          if (other.CompareTag("PickUp"))
          {
+            MyGameManager.ScoreUp();
             playerExp += 1;
             if (expRequiredForLeveling == playerExp)
             {
