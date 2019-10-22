@@ -135,7 +135,8 @@ MonoBehaviour:
   speed: 0.5
   health: 6
   spawnEnemies: 3
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 2309245943779142146, guid: 65b82e9ddf6431a4aa03c564279518a5,
+    type: 3}
   enemyToSpawn: {fileID: 5637652578441863535, guid: 25bd4fae56b3d0d4c97e14c273375ee6,
     type: 3}
   sprite:

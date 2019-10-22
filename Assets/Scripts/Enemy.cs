@@ -60,8 +60,8 @@ public class Enemy : MonoBehaviour
     
     public void SpawnArtifacts(float x, float y, int amount)
     {   
-        float xRange = x + Random.Range(-2f, 2f);
-        float yRange = y + Random.Range(-2f, 2f);
+        float xRange = x + Random.Range(-0.5f, 0.5f);
+        float yRange = y + Random.Range(-0.5f, 0.5f);
         Vector2 spownPosition = new Vector2(xRange, yRange);
         GameObject artifact =  Instantiate(sprite[Random.Range(0, sprite.Length - 1)], spownPosition, Quaternion.identity);
         artifact.transform.localScale =  (artifact.transform.localScale + this.transform.localScale) / 5f;

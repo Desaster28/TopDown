@@ -23,7 +23,7 @@ public class BasicSpawnEnemy : MonoBehaviour
         colider = GetComponent<CircleCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        radius = transform.localScale.magnitude;
+        radius = colider.radius;
     }
     void Update()
     {
@@ -36,49 +36,14 @@ public class BasicSpawnEnemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Player"))
         {
-            //float sizeDifferance = (radius - playerPos.transform.localScale.magnitude);
-
-            //Debug.Log("Float Size Differance: " + sizeDifferance);
-            //Debug.Log("Int Size Differance: " + Mathf.RoundToInt(sizeDifferance));
-
-            //if (sizeDifferance <= 1 || sizeDifferance >= -1)
-            //{
-            //    Debug.Log("Draw");
-            //    player.damageIntake(1);
-            //    health--;
-            //}
-            //else if (sizeDifferance > 0)
-            //{
-            //    Debug.Log("Enemy");
-            //    player.damageIntake(Mathf.RoundToInt(sizeDifferance));
-            //    Debug.Log(sizeDifferance);
-            //}
-            //else
-            //{
-            //    Debug.Log("Player");
-            //    health += Mathf.RoundToInt(sizeDifferance);
-            //    Debug.Log(sizeDifferance);
-            //}
-
-            float playerRadius = playerPos.transform.localScale.magnitude;
-            float sum = radius + playerRadius;
-            float playerPercentage = (playerRadius * 100) / sum;
-            float enemyPercentage = (radius * 100) / sum;
-
-            if(playerPercentage < enemyPercentage)
-            {
-                Debug.Log("Player took" + Mathf.RoundToInt(enemyPercentage));
-            }
+            OnCollisionWithPlayer();
         }
         if (other.CompareTag("Fire"))
         {
             health--;
-
-            Destroy(other.gameObject);
-            
+            Destroy(other.gameObject);           
         }
     }
 
@@ -109,10 +74,35 @@ public class BasicSpawnEnemy : MonoBehaviour
     {       
         for (int i = 0; i < amountOfEnemiesToSpawn; i++)
         {
-            float xRange = x + Random.Range(-radius, radius);
-            float yRange = y + Random.Range(-radius, radius);
+            float spawnRadius = transform.localScale.magnitude;
+            float xRange = x + Random.Range(-spawnRadius, spawnRadius);
+            float yRange = y + Random.Range(-spawnRadius, spawnRadius);
             Vector2 spownPosition = new Vector2(xRange, yRange);
             GameObject artifact = Instantiate(enemyToSpawn, spownPosition, Quaternion.identity); 
+        }
+    }
+
+    private void OnCollisionWithPlayer()
+    {
+        float playerRadius = playerPos.GetComponent<CircleCollider2D>().radius;
+        float sum = radius + playerRadius;
+        float playerPercentage = (playerRadius * 100) / sum;
+        float enemyPercentage = (radius * 100) / sum;
+        float difference = playerPercentage - enemyPercentage;
+
+        if (difference <= 10 && difference >= -10)
+        {
+            health--;
+            player.damageIntake(1);
+        }
+        else if (playerPercentage < enemyPercentage)
+        {
+            Debug.Log("Damage: " + Mathf.RoundToInt(enemyPercentage / 10));
+            player.damageIntake(Mathf.RoundToInt(enemyPercentage / 10));
+        }
+        else
+        {
+            health -= Mathf.RoundToInt(playerPercentage / 10);
         }
     }
 }
