@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerControll : MonoBehaviour
 {
     public float speed;
@@ -12,7 +12,9 @@ public class PlayerControll : MonoBehaviour
     public Camera cam;
     Vector2 mousePos;    
     public GameObject deathEffect;
-
+    public Canvas Healthbar;
+    public Sprite LifeIsTrue;
+    public Sprite LifeIsFalse;
     [Header("Leveling")]
     public int playerLevel = 1;
     public int playerExp = 0;
