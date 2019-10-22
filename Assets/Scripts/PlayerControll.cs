@@ -20,6 +20,7 @@ public class PlayerControll : MonoBehaviour
     public int playerExp = 0;
     public int expRequiredForLeveling = 10;
     public int maxLevel;
+    public  Vector2 moveInput;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (Time.timeScale == 0)
             return;
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
     
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -66,14 +67,19 @@ public class PlayerControll : MonoBehaviour
         }
         
     }
-    private void FixedUpdate()
+
+    private void move(){
+        rb.velocity = new Vector2(moveInput.x,moveInput.y)*speed;
+    }
+        private void FixedUpdate()
     {
         if (Time.timeScale == 0)
             return;
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+            move();
+       // rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         //rb.velocity = moveVelocity;
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
-        //rb.rotation = rotate;
+        rb.rotation = rotate;
     }
 }

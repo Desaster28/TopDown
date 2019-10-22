@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Basic Sun 1
   m_Shader: {fileID: 4800000, guid: ed5c43828ea46ec45996a7c0d575f317, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -30,9 +30,13 @@ Material:
     m_Floats:
     - _BallRadius: 0.45
     - _BallSharpness: 6
+    - _Mode: 0
     - _RayFrequency: 2
     - _RayIntensity: 50
     - _RayRoughness: 0.8059702
     - _RaySpeed: 3
+    - _Speed: 3
+    - _TextureScale: 4
     m_Colors:
     - _Color: {r: 0.92941177, g: 1, b: 0.5529412, a: 1}
+    - _SecondaryColor: {r: 1, g: 1, b: 1, a: 1}

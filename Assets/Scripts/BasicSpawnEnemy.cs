@@ -27,12 +27,17 @@ public class BasicSpawnEnemy : MonoBehaviour
     }
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
-
+            //transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+        move();
         if (health < 1)
         {
             KillCurentEnemy();
         }
+    }
+      private void move(){
+        Vector2 direction = playerPos.position - transform.position;
+
+        rbe.velocity = new Vector2(direction.x,direction.y);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -70,6 +75,14 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        var magnitude = 1000;
+        var force = transform.position - other.transform.position;
+        force.Normalize();
+        gameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);       
+    }
+
     private void SpownBssicEnemy(float x, float y, int amountOfEnemiesToSpawn)
     {       
         for (int i = 0; i < amountOfEnemiesToSpawn; i++)
@@ -90,19 +103,25 @@ public class BasicSpawnEnemy : MonoBehaviour
         float enemyPercentage = (radius * 100) / sum;
         float difference = playerPercentage - enemyPercentage;
 
-        if (difference <= 10 && difference >= -10)
+        if(playerPercentage >= 70)
+        {
+            KillCurentEnemy();
+        }
+        else
         {
             health--;
             player.damageIntake(1);
         }
-        else if (playerPercentage < enemyPercentage)
-        {
-            Debug.Log("Damage: " + Mathf.RoundToInt(enemyPercentage / 10));
-            player.damageIntake(Mathf.RoundToInt(enemyPercentage / 10));
-        }
-        else
-        {
-            health -= Mathf.RoundToInt(playerPercentage / 10);
-        }
+            
+        // else if (playerPercentage < enemyPercentage)
+        // {
+        //     Debug.Log("Enemy");
+        //     Debug.Log("Damage: " + Mathf.RoundToInt(enemyPercentage / 10));
+        //     player.damageIntake(Mathf.RoundToInt(enemyPercentage / 10));
+        // }
+        // else
+        // {
+        //     health -= Mathf.RoundToInt(playerPercentage / 10);
+        // }
     }
 }
