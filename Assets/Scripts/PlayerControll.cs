@@ -74,6 +74,6 @@ public class PlayerControll : MonoBehaviour
         //rb.velocity = moveVelocity;
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
-        rb.rotation = rotate;
+        //rb.rotation = rotate;
     }
 }
