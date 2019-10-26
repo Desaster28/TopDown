@@ -21,6 +21,8 @@ public class PlayerControll : MonoBehaviour
     public int expRequiredForLeveling = 10;
     public int maxLevel;
     public  Vector2 moveInput;
+    public GameManager MyGameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,7 @@ public class PlayerControll : MonoBehaviour
     {
          if (other.CompareTag("PickUp"))
          {
+            MyGameManager.ScoreUp();
             playerExp += 1;
             if (expRequiredForLeveling == playerExp)
             {
