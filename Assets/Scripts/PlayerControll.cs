@@ -6,15 +6,12 @@ using UnityEngine.UI;
 public class PlayerControll : MonoBehaviour
 {
     public float speed;
-    public int health = 5;
+    public int health = 1;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public Camera cam;
     Vector2 mousePos;    
     public GameObject deathEffect;
-    public Canvas Healthbar;
-    public Sprite LifeIsTrue;
-    public Sprite LifeIsFalse;
     [Header("Leveling")]
     public int playerLevel = 1;
     public int playerExp = 0;
@@ -28,19 +25,19 @@ public class PlayerControll : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        Debug.Log("Unser Health is " + health);
     }
     public void damageIntake(int i)
     {
+        health -= i;
+        
         if (health < 1)
         {
+            
             Instantiate(deathEffect, transform.position, Quaternion.identity);
+            
         }
-        else
-        {
-            Debug.Log(health);
-            health -= i;
-        }
+
 
     }
     // Update is called once per frame

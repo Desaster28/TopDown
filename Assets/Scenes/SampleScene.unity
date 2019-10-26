@@ -1273,6 +1273,11 @@ PrefabInstance:
       propertyPath: MyGameManager
       value: 
       objectReference: {fileID: 226196041}
+    - target: {fileID: 5397032377181035209, guid: 5c3c7b9399f6a1c40a37eb351ce1d527,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 616945731, guid: 5c3c7b9399f6a1c40a37eb351ce1d527, type: 3}
       propertyPath: m_Controller
       value: 
