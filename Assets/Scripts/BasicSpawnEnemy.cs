@@ -28,7 +28,7 @@ public class BasicSpawnEnemy : MonoBehaviour
     void Update()
     {
             //transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
-        move();
+        
         if (health < 1)
         {
             KillCurentEnemy();
@@ -38,6 +38,10 @@ public class BasicSpawnEnemy : MonoBehaviour
         Vector2 direction = playerPos.position - transform.position;
 
         rbe.velocity = new Vector2(direction.x,direction.y);
+    }
+    private void FixedUpdate()
+    {
+        move();
     }
     void OnTriggerEnter2D(Collider2D other)
     {

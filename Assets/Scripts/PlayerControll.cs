@@ -102,7 +102,7 @@ public class PlayerControll : MonoBehaviour
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
         float dist = Vector2.Distance(rb.position, mousePos);
-        Debug.Log(dist);
+        //Debug.Log(dist);
         if (dist > 0.2)
         {
             rb.rotation = (Mathf.LerpAngle(rb.rotation, Quaternion.AngleAxis(rotate, Vector3.forward).eulerAngles.z, 0.5f));

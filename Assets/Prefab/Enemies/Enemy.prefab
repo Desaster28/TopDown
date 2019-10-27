@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6966320681826531046}
   - component: {fileID: 3145404843659613373}
   - component: {fileID: 5153975637956201113}
+  - component: {fileID: -1888916722416871764}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -91,14 +92,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5637652578441863535}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec127685bfc71e945a50c6c9297eb88d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2.33
   health: 2
   deathEffect: {fileID: 2309245943779142146, guid: 6b556e3381350f44c873ebe970f24538,
     type: 3}
@@ -147,3 +148,19 @@ MonoBehaviour:
   - {fileID: 2652986211072547247, guid: 5072bf5db3cd7534daad7268acf98ad9, type: 3}
   - {fileID: 4603346615453014059, guid: 9c2a9d0d343bf8a4fab39f79c47aa36f, type: 3}
   - {fileID: 1119413086496894972, guid: 9429f32db9810344bbc9d12ec2762e99, type: 3}
+--- !u!58 &-1888916722416871764
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637652578441863535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7.41

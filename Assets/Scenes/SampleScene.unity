@@ -322,6 +322,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6726505438061174476, guid: b0cb7f237ff8c894490cca075d09bfa6,
+        type: 3}
+      propertyPath: MyGameManager
+      value: 
+      objectReference: {fileID: 226196041}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0cb7f237ff8c894490cca075d09bfa6, type: 3}
 --- !u!1 &312588136
@@ -2025,6 +2030,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5397032377181035208, guid: 5c3c7b9399f6a1c40a37eb351ce1d527,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 616945730, guid: 5c3c7b9399f6a1c40a37eb351ce1d527, type: 3}
     - {fileID: 616945732, guid: 5c3c7b9399f6a1c40a37eb351ce1d527, type: 3}
@@ -2069,22 +2079,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 308271175}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &1704960322
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704960317}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 9.4
 --- !u!50 &1704960323
 Rigidbody2D:
   serializedVersion: 4

@@ -14,6 +14,7 @@ public class SpeedEnemy : MonoBehaviour
     private CircleCollider2D colider;
     public GameObject[] sprite;
     public Transform Player;
+    public GameManager MyGameManager;
 
     private void Start()
     {
@@ -27,26 +28,38 @@ public class SpeedEnemy : MonoBehaviour
     
     void Update()
     {
+    }
+    private void FixedUpdate()
+    {
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.CompareTag("Player"))
+        Debug.Log(other.GetType());
+        Debug.Log(typeof(CircleCollider2D));
+        if (other.GetType() == typeof(CircleCollider2D))
+        { Debug.Log("AHALL"); }
+            if (other.CompareTag("Player"))
         {
             player.damageIntake(5);
             KillCurentEnemy();
+            MyGameManager.ScoreUp(50);
         }
         if (other.CompareTag("Fire"))
         {
+            Debug.Log("HOWMANY");
             Destroy(other.gameObject);
             KillCurentEnemy();
+            MyGameManager.ScoreUp(50);
+
+
         }
     }
 
     private void KillCurentEnemy()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
     }
 
