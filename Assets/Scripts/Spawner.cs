@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     public int zPos;
     public int EnemyCount;
 
-    IEnumerator EnemyDrop()
+    /*IEnumerator EnemyDrop()
     {
         while (EnemyCount < 10)
         {
@@ -26,13 +26,13 @@ public class Spawner : MonoBehaviour
             EnemyCount += 1;
 
         }
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
     {
         timeBtwSpawns = startTimeBtwSpawn;
-        StartCoroutine(EnemyDrop());
+       // StartCoroutine(EnemyDrop());
     }
 
     // Update is called once per frame
