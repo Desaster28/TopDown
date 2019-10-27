@@ -17,7 +17,7 @@ public class GUIManager : MonoBehaviour
     }
     public void setTime(string time)
     {
-        countTimer.text = time + "s";
+        countTimer.text = time + "";
     }
     public void HealthM(){}
     public void HealthP(){}

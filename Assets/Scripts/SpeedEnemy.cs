@@ -34,13 +34,19 @@ public class SpeedEnemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.GetType());
         Debug.Log(typeof(CircleCollider2D));
         if (other.GetType() == typeof(CircleCollider2D))
         { Debug.Log("AHALL"); }
-            if (other.CompareTag("Player"))
+
+
+        if (other.CompareTag("Player"))
         {
             player.damageIntake(5);
             KillCurentEnemy();

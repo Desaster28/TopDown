@@ -1967,7 +1967,7 @@ PrefabInstance:
     - target: {fileID: 5599477504948904647, guid: d8de41fe975147c43aad22bc4059d8ea,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1423.1
+      value: 1423.1016
       objectReference: {fileID: 0}
     - target: {fileID: 5599477504948904647, guid: d8de41fe975147c43aad22bc4059d8ea,
         type: 3}
@@ -2695,7 +2695,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 s
+  m_Text: '0 s
+
+'
 --- !u!1 &2028380955
 GameObject:
   m_ObjectHideFlags: 0

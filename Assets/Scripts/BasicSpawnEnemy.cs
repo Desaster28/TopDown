@@ -88,7 +88,7 @@ public class BasicSpawnEnemy : MonoBehaviour
     }
 
     private void SpownBssicEnemy(float x, float y, int amountOfEnemiesToSpawn)
-    {       
+    {
         for (int i = 0; i < amountOfEnemiesToSpawn; i++)
         {
             float spawnRadius = transform.localScale.magnitude;
