@@ -35,6 +35,14 @@ public class PlayerControll : MonoBehaviour
 
         health -= i;
         healthBar.value = health;
+        if(rb.transform.localScale.x <=0.001 )
+        {
+            Debug.Log("Death");
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Time.timeScale = 0;
+        }
+        else{rb.transform.localScale -= new Vector3(0.005f, 0.005f, 0);}
+        //rb.transform.localScale *= 0.01f;//
         
         if (health < 1)
         {
@@ -78,9 +86,10 @@ public class PlayerControll : MonoBehaviour
          {
             MyGameManager.ScoreUp(10);
             playerExp += 1;
+            rb.transform.localScale += new Vector3(0.005f,0.005f,0);
             if (expRequiredForLeveling == playerExp)
             {
-                Debug.Log("Level up");
+                
                 playerExp = 0;
             }
             

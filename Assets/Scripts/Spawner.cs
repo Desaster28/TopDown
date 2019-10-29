@@ -18,13 +18,14 @@ public class Spawner : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
-        while (EnemyCount < 10)
+        while (EnemyCount < 50)
         {
-            Debug.Log(EnemyCount);
+            // Debug.Log(EnemyCount);
             xPos = Random.Range(-55,56);
             yPos = Random.Range(-55,56);
             RandEnemy = Random.Range(0,TheEnemy.Length+1);
-            Instantiate(TheEnemy[RandEnemy], new Vector2(xPos, yPos), Quaternion.identity);
+            GameObject go = Instantiate(TheEnemy[0], new Vector2(xPos, yPos), Quaternion.identity);
+            go.GetComponent<Enemy>().spawnerScript=this;
             yield return new WaitForSeconds(0.1f);
             EnemyCount += 1;
 
