@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4635400160737020925}
-  - component: {fileID: 4635400160737020914}
+  - component: {fileID: 226196041}
+  - component: {fileID: 6471887619957470515}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4635400160737020914
+--- !u!114 &226196041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,6 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72178da525fb335468b373c51ac50bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyGUIManager: {fileID: 5599477504544780816, guid: d8de41fe975147c43aad22bc4059d8ea,
-    type: 3}
+  MyGUIManager: {fileID: 0}
   health: 0
+--- !u!114 &6471887619957470515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635400160737020915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2611fc6e176b064fa527b455d318de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  spawnSpots: []
+  startTimeBtwSpawn: 0
+  TheEnemy:
+  - {fileID: 8647301715265185797, guid: 25bd4fae56b3d0d4c97e14c273375ee6, type: 3}
+  xPos: 0
+  yPos: 0
+  RandEnemy: 0
+  EnemyCount: 0

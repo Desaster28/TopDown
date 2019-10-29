@@ -57,7 +57,7 @@ public class PlayerControll : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.zero);
             rb.angularVelocity = 0f;
-           // Invoke("KinematicStop", 0.1f);
+            //Invoke("KinematicStop", 0.1f);
             //Invoke("KinematicOn", 0.1f);
         }
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);

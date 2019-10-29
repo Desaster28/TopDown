@@ -10,33 +10,42 @@ public class Spawner : MonoBehaviour
     private float timeBtwSpawns;
     public float startTimeBtwSpawn;
     // NEW SPAWN VARS
-    public GameObject TheEnemy;
+    public GameObject[] TheEnemy;
     public int xPos;
-    public int zPos;
+    public int yPos;
+    public int RandEnemy;
     public int EnemyCount;
 
-    /*IEnumerator EnemyDrop()
+    IEnumerator EnemyDrop()
     {
         while (EnemyCount < 10)
         {
-            xPos = Random.Range(xmin,xmax);
-            zPos = Random.Range(zmin, z);
-            Instantiate(TheEnemy, new Vector2(xPos, zPos), Quaternion.identity);
+            Debug.Log(EnemyCount);
+            xPos = Random.Range(-55,56);
+            yPos = Random.Range(-55,56);
+            RandEnemy = Random.Range(0,TheEnemy.Length+1);
+            Instantiate(TheEnemy[RandEnemy], new Vector2(xPos, yPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             EnemyCount += 1;
 
         }
-    }*/
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        timeBtwSpawns = startTimeBtwSpawn;
-       // StartCoroutine(EnemyDrop());
+       // timeBtwSpawns = startTimeBtwSpawn;
+        StartCoroutine(EnemyDrop());
     }
+    public void EnemyCountDecrease(){
+        if(EnemyCount<1){
 
+        }else{
+            EnemyCount--;
+        }
+    }
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (timeBtwSpawns <= 0)
         {
@@ -48,5 +57,5 @@ public class Spawner : MonoBehaviour
         {
             timeBtwSpawns -= Time.deltaTime;
         }
-    }
+    }*/
 }

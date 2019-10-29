@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
     private Rigidbody2D rbe;
     public GameObject[] sprite;
-
+    public Spawner spawnerScript;
     private void Start()
     {
         rbe = GetComponent<Rigidbody2D>();
@@ -54,7 +54,8 @@ public class Enemy : MonoBehaviour
     {
         SpawnArtifacts(rbe.position.x,rbe.position.y,1);
         Destroy(gameObject);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);  
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //spawnerScript.EnemyCountDecrease();  
        
     }       
     
