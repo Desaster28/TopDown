@@ -31,8 +31,8 @@ public class Spawner : MonoBehaviour
             Debug.Log(MyGameManager.getTime());
             //if(MyGameManager.getTime() > 10f){
                 Debug.Log("In if");
-                GameObject first10Seconds = Instantiate(TheEnemy[0], new Vector2(xPos, yPos), Quaternion.identity);
-                first10Seconds.GetComponent<Enemy>().spawnerScript=this;
+                //GameObject first10Seconds = Instantiate(TheEnemy[0], new Vector2(xPos, yPos), Quaternion.identity);
+                //first10Seconds.GetComponent<Enemy>().spawnerScript=this;
                 yield return new WaitForSeconds(0.5f);
             //}
 
@@ -49,13 +49,25 @@ public class Spawner : MonoBehaviour
     public void SpawnBasicEnemy(){
         Instantiate(TheEnemy[0], new Vector3(Random.Range(-55,56), Random.Range(-55,56), 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         if(MyGameManager.getTime() > 10f){
+            SecondWave();
             CancelInvoke("SpawnBasicEnemy");
+            
+        }
+    }
+    public void SecondWave()
+    {
+        Instantiate(TheEnemy[0], new Vector3(Random.Range(-55, 56), Random.Range(-55, 56), 0), Quaternion.Euler(new Vector3(0, 0, -90)));
+        if (MyGameManager.getTime() > 30f)
+        {
+            CancelInvoke("SecondWave");
+            
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        SpawnBasicEnemy();
         InvokeRepeating("SpawnBasicEnemy", 0, 0.5f);
        // timeBtwSpawns = startTimeBtwSpawn;
         //StartCoroutine(EnemyDrop());
