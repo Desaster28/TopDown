@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerControll : MonoBehaviour
 {
     public float speed;
-    public int health = 1;
+
+    public int health;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public Camera cam;
@@ -19,17 +20,21 @@ public class PlayerControll : MonoBehaviour
     public int maxLevel;
     public  Vector2 moveInput;
     public GameManager MyGameManager;
-
+    public Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 100;
         rb = GetComponent<Rigidbody2D>();
         Debug.Log("Unser Health is " + health);
+        healthBar.value = health;
     }
     public void damageIntake(int i)
     {
+
         health -= i;
+        healthBar.value = health;
         
         if (health < 1)
         {
@@ -45,17 +50,33 @@ public class PlayerControll : MonoBehaviour
     {
         if (Time.timeScale == 0)
             return;
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         moveVelocity = moveInput.normalized * speed;
-    
+        if (Input.anyKey == false)
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.zero);
+            rb.angularVelocity = 0f;
+            //Invoke("KinematicStop", 0.1f);
+            //Invoke("KinematicOn", 0.1f);
+        }
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
     }
+    /*void KinematicStop()
+    {
+        rb.isKinematic = true;
+    }
+    void KinematicOn()
+    {
+        rb.isKinematic = false;
+    }*/
+
     void OnTriggerEnter2D(Collider2D other)
     {
          if (other.CompareTag("PickUp"))
          {
-            MyGameManager.ScoreUp();
+            MyGameManager.ScoreUp(10);
             playerExp += 1;
             if (expRequiredForLeveling == playerExp)
             {
@@ -80,6 +101,13 @@ public class PlayerControll : MonoBehaviour
         //rb.velocity = moveVelocity;
         Vector2 lookDir = mousePos - rb.position;
         float rotate = Mathf.Atan2(lookDir.y,lookDir.x)*Mathf.Rad2Deg-90f;
-        rb.rotation = rotate;
+        float dist = Vector2.Distance(rb.position, mousePos);
+        //Debug.Log(dist);
+        if (dist > 0.2)
+        {
+            rb.rotation = (Mathf.LerpAngle(rb.rotation, Quaternion.AngleAxis(rotate, Vector3.forward).eulerAngles.z, 0.5f));
+            //rb.rotation = rotate;
+        }
+        else { }
     }
 }
