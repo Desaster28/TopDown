@@ -19,6 +19,10 @@ public class Shoting : MonoBehaviour
             sound.Play();
         }
     }
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

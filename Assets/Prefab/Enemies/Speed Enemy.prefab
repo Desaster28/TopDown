@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2150741492778104498}
   - component: {fileID: 2150741492778104499}
   - component: {fileID: 2150741492778104526}
+  - component: {fileID: 4847878741213661266}
   m_Layer: 0
   m_Name: Speed Enemy
   m_TagString: Speed Enemy
@@ -101,7 +102,7 @@ MonoBehaviour:
     type: 3}
   sprite: []
   Player: {fileID: 5397032377181035214, guid: 5c3c7b9399f6a1c40a37eb351ce1d527, type: 3}
-  MyGameManager: {fileID: 0}
+  MyGameManager: {fileID: 226196041, guid: 303a3be698c715542922b1f6d5767cd9, type: 3}
 --- !u!58 &2150741492778104499
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,3 +140,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &4847878741213661266
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2150741492778104496}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.51, y: 0}
+  serializedVersion: 2
+  m_Radius: 7.7

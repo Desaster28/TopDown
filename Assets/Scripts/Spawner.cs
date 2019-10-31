@@ -46,18 +46,27 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SpawnBasicEnemy(){
+    public void SpawnBasicEnemy()
+    {
         Instantiate(TheEnemy[0], new Vector3(Random.Range(-55,56), Random.Range(-55,56), 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         if(MyGameManager.getTime() > 10f){
             CancelInvoke("SpawnBasicEnemy");
         }
     }
 
+    public void SpawnSpeedEnemy()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnBasicEnemy", 0, 0.5f);
-       // timeBtwSpawns = startTimeBtwSpawn;
+        InvokeRepeating("SpawnBasicEnemy", 10, 0.5f);
+
+
+        // timeBtwSpawns = startTimeBtwSpawn;
         //StartCoroutine(EnemyDrop());
     }
     
