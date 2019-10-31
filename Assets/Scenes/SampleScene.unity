@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fefc83080d25f4590f69b4dc86d03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 616945730}
+  player: {fileID: 616945723}
   delay: 3
 --- !u!20 &519420031
 Camera:
@@ -771,12 +771,6 @@ Animator:
 --- !u!1 &616945723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5397032377181035210, guid: 5c3c7b9399f6a1c40a37eb351ce1d527,
-    type: 3}
-  m_PrefabInstance: {fileID: 1565399461}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &616945730 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5397032377181035214, guid: 5c3c7b9399f6a1c40a37eb351ce1d527,
     type: 3}
   m_PrefabInstance: {fileID: 1565399461}
   m_PrefabAsset: {fileID: 0}
