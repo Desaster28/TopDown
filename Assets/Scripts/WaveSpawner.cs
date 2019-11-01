@@ -141,8 +141,10 @@ public class WaveSpawner : MonoBehaviour {
 
         Debug.Log("Spawning Enemy: " + _enemy.name);
 
-		//Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
-		Instantiate(_enemy, new Vector2(xPos, yPos), Quaternion.identity);
-	}
+        //Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
+        Instantiate(_enemy, new Vector2(xPos, yPos), Quaternion.identity);
+        //go.gameObject.AddComponent<GameManager>();
+        //go.GetComponent<Enemy>().MyGameManager = GetComponent<GameManager>();
+    }
 
 }

@@ -2,23 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedEnemy : MonoBehaviour
-{    
-    private Transform playerPos;
-    private PlayerControll player;
+public class SpeedEnemy : Enemy
+{   
+    public float speedo;
+ 
 
-    public float speed;
-    public int health = 1;
-    public GameObject deathEffect;
-    private Rigidbody2D rbe;
     private CircleCollider2D colider;
-    public GameObject[] sprite;
-    public Transform Player;
-    public GameManager MyGameManager;
-    public bool isColliding;
+
     private void Start()
     {
-        rbe = GetComponent<Rigidbody2D>();
+        health = 1;
         colider = GetComponent<CircleCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -32,7 +25,7 @@ public class SpeedEnemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speedo * Time.deltaTime);
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,18 +34,12 @@ public class SpeedEnemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(other.GetType());
-        //Debug.Log(typeof(CircleCollider2D));
-        //if (other.GetType() == typeof(CircleCollider2D))
-        //{ Debug.Log("AHALL"); }
-
-        //Debug.LogWarning(other.tag);
         if (other.CompareTag("Player"))
         {
             
             player.damageIntake(5);
             KillCurentEnemy();
-            MyGameManager.ScoreUp(50);
+            MyGameManager.ScoreUp(70);
             Debug.Log("Ich bin in Player");
 
         }
@@ -65,25 +52,20 @@ public class SpeedEnemy : MonoBehaviour
             //Debug.Log("HOWMANY");
             Destroy(other.gameObject);
             //other.GetComponent<Shoting>().DestroyBullet();
-           // Debug.Log("HOWMANY2");
+            // Debug.Log("HOWMANY2");
             KillCurentEnemy();
-            MyGameManager.ScoreUp(50);
+            MyGameManager.ScoreUp(20);
 
 
         }
     }
 
-    private void KillCurentEnemy()
-    {
-        Destroy(this.gameObject);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-    }
 
     private void setProperties()
     {
         Vector3 temp = transform.localScale;
-        temp.x *= Player.localScale.x;
-        temp.y *= Player.localScale.y;
+        temp.x *= playerPos.localScale.x;
+        temp.y *= playerPos.localScale.y;
         transform.localScale = temp;
     }
 }

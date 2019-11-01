@@ -17,6 +17,7 @@ public class BasicSpawnEnemy : MonoBehaviour
     private CircleCollider2D colider;
     private float radius;
     public bool isColliding;
+    public GameManager MyGameManager;
 
     private void Start()
     {
@@ -25,15 +26,14 @@ public class BasicSpawnEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         radius = colider.radius;
+        MyGameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
     }
     void Update()
     {
             //transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
         
-        if (health < 1)
-        {
-            KillCurentEnemy();
-        }
+
     }
       private void move(){
         Vector2 direction = playerPos.position - transform.position;
@@ -49,21 +49,41 @@ public class BasicSpawnEnemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnCollisionWithPlayer();
+            if (health < 1)
+            {
+                KillCurentEnemy();
+            }
         }
         if (other.CompareTag("Fire"))
         {
             health--;
-            Destroy(other.gameObject);           
+            Destroy(other.gameObject);
+            if (health < 1)
+            {
+                KillCurentEnemyWithArtifact();
+            }
         }
+
+
     }
 
-    private void KillCurentEnemy()
+    private void KillCurentEnemyWithArtifact()
     {
         SpawnArtifacts(rbe.position.x, rbe.position.y, 3);
         SpownBssicEnemy(rbe.position.x, rbe.position.y, spawnEnemies);
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        MyGameManager.ScoreUp(150);
 
+    }
+
+    private void KillCurentEnemy()
+    {
+        //SpawnArtifacts(rbe.position.x, rbe.position.y, 3);
+        SpownBssicEnemy(rbe.position.x, rbe.position.y, spawnEnemies);
+        Destroy(gameObject);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        MyGameManager.ScoreUp(30);
     }
 
     public void SpawnArtifacts(float x, float y, int amount)

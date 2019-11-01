@@ -6,25 +6,23 @@ public class Enemy : MonoBehaviour
 {
 
     public float speed;
-    private Transform playerPos;
-    private PlayerControll player;
+    protected Transform playerPos;
+    protected PlayerControll player;
     public int health = 2;
     public GameObject deathEffect;
     private Rigidbody2D rbe;
     public GameObject[] sprite;
     public bool isColliding;
+    public GameManager MyGameManager;
 
-    private void Start()
+    protected void Start()
     {
         rbe = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        MyGameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-  //  public void takeDamage(int i)
-   // {
-   //     if (health > 0) { health-=i; Debug.Log(health); }
-   //     else { Destroy(gameObject); }
-   // }
+
     void Update()
     {
         transform.position = Vector2.MoveTowards( transform.position, playerPos.position , speed * Time.deltaTime);
@@ -51,21 +49,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void KillCurentEnemyWithArtifact()
+    protected void KillCurentEnemyWithArtifact()
     {
-        SpawnArtifacts(rbe.position.x,rbe.position.y,1);
+       
         Destroy(gameObject);
+        SpawnArtifacts(rbe.position.x, rbe.position.y, 1);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         //spawnerScript.EnemyCountDecrease();  
-       
+        MyGameManager.ScoreUp(50);
     }
-    private void KillCurentEnemy()
+    protected void KillCurentEnemy()
     {
         //SpawnArtifacts(rbe.position.x, rbe.position.y, 1);
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         //spawnerScript.EnemyCountDecrease();  
-
+        MyGameManager.ScoreUp(10);
     }
 
     public void SpawnArtifacts(float x, float y, int amount)

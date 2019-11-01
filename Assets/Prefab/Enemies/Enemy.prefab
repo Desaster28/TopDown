@@ -149,6 +149,7 @@ MonoBehaviour:
   - {fileID: 4603346615453014059, guid: 9c2a9d0d343bf8a4fab39f79c47aa36f, type: 3}
   - {fileID: 1119413086496894972, guid: 9429f32db9810344bbc9d12ec2762e99, type: 3}
   isColliding: 0
+  MyGameManager: {fileID: 0}
 --- !u!58 &8342046061071491319
 CircleCollider2D:
   m_ObjectHideFlags: 0

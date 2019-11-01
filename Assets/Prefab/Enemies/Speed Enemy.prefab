@@ -101,8 +101,9 @@ MonoBehaviour:
   deathEffect: {fileID: 2309245943779142146, guid: 7013b313f2e30ae44a9ea05c3e8402f8,
     type: 3}
   sprite: []
-  Player: {fileID: 5397032377181035214, guid: 5c3c7b9399f6a1c40a37eb351ce1d527, type: 3}
+  isColliding: 0
   MyGameManager: {fileID: 226196041, guid: 303a3be698c715542922b1f6d5767cd9, type: 3}
+  speedo: 5
 --- !u!58 &2150741492778104499
 CircleCollider2D:
   m_ObjectHideFlags: 0
