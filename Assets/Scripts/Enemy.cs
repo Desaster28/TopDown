@@ -10,12 +10,12 @@ public class Enemy : MonoBehaviour
     protected PlayerControll player;
     public int health = 2;
     public GameObject deathEffect;
-    private Rigidbody2D rbe;
+    protected Rigidbody2D rbe;
     public GameObject[] sprite;
     public bool isColliding;
     public GameManager MyGameManager;
 
-    protected void Start()
+    protected virtual void Start()
     {
         rbe = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();

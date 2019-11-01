@@ -7,15 +7,15 @@ public class SpeedEnemy : Enemy
     public float speedo;
  
 
-    private CircleCollider2D colider;
 
-    private void Start()
+
+    protected override void Start()
     {
         health = 1;
-        colider = GetComponent<CircleCollider2D>();
+        rbe = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControll>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
+        MyGameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         setProperties();
     }
     

@@ -6,7 +6,7 @@ public class ArtifactSpawner : MonoBehaviour
 {
     //public GameObject[] sprite;
     public Sprite[] sprite;
-    
+
     public void SpawnArtifacts(int x, int y, int amount)
     {
         int xRange = x + Random.Range(-5, 5);

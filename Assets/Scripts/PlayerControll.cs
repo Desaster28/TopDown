@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,8 @@ public class PlayerControll : MonoBehaviour
     public GameManager MyGameManager;
     public Slider healthBar;
     public GameObject[] sprite;
+    public float duration = 1.0f;
+    private float elapsed = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,18 +33,46 @@ public class PlayerControll : MonoBehaviour
         Debug.Log("Unser Health is " + health);
         healthBar.value = health;
     }
+    public void Wait(float seconds, Action action)
+    {
+        StartCoroutine(_wait(seconds, action));
+    }
+    IEnumerator _wait(float time, Action callback)
+    {
+        yield return new WaitForSeconds(time);
+        callback();
+    }
+    private IEnumerator resizeRoutine(float oldSize, float newSize, float time)
+    {
+        float elapsed = 0;
+        while (elapsed <= time)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / time);
+
+            cam.orthographicSize = Mathf.Lerp(oldSize, newSize, t);
+            yield return null;
+        }
+    }
     public void damageIntake(int i)
     {
 
         health -= i;
         healthBar.value = health;
-        if(rb.transform.localScale.x <=0.001 )
+        if (rb.transform.localScale.x <= 0.001)
         {
             Debug.Log("Death");
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Time.timeScale = 0;
+            Wait(0.50f, () => { Time.timeScale = 0; });
         }
-        else rb.transform.localScale -= new Vector3(0.005f, 0.005f, 0);
+        else
+        {
+            rb.transform.localScale -= new Vector3(0.0075f, 0.0075f, 0);
+            Debug.Log(cam.orthographicSize);
+            //cam.orthographicSize -= Mathf.Lerp(cam.orthographicSize,0.100f,5);
+            elapsed += Time.deltaTime / duration;
+           StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.100f, 0.5f));
+        }
         //rb.transform.localScale *= 0.01f;//
         
         if (health < 1)
@@ -77,10 +108,10 @@ public class PlayerControll : MonoBehaviour
     }
     public void SpawnArtifacts(float x, float y, int amount)
     {
-        float xRange = x + Random.Range(-0.5f, 0.5f);
-        float yRange = y + Random.Range(-0.5f, 0.5f);
+        float xRange = x + UnityEngine.Random.Range(-0.5f, 0.5f);
+        float yRange = y + UnityEngine.Random.Range(-0.5f, 0.5f);
         Vector2 spownPosition = new Vector2(xRange, yRange);
-        GameObject artifact = Instantiate(sprite[Random.Range(0, sprite.Length - 1)], spownPosition, Quaternion.identity);
+        GameObject artifact = Instantiate(sprite[UnityEngine.Random.Range(0, sprite.Length - 1)], spownPosition, Quaternion.identity);
         artifact.transform.localScale = (artifact.transform.localScale + this.transform.localScale) / 5f;
 
     }
@@ -102,12 +133,12 @@ public class PlayerControll : MonoBehaviour
             rb.transform.localScale += new Vector3(0.005f,0.005f,0);
             Debug.Log(cam.orthographicSize);
             cam.orthographicSize += 0.025f;
-            Debug.Log("DAS IST TEST");
+            /*Debug.Log("DAS IST TEST");
             if (expRequiredForLeveling == playerExp)
             {
                 
                 playerExp = 0;
-            }
+            }*/
             
              Destroy(other.gameObject);
         }
