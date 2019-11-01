@@ -21,7 +21,7 @@ public class PlayerControll : MonoBehaviour
     public  Vector2 moveInput;
     public GameManager MyGameManager;
     public Slider healthBar;
-
+    public GameObject[] sprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +69,19 @@ public class PlayerControll : MonoBehaviour
             //Invoke("KinematicOn", 0.1f);
         }
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetKey(KeyCode.E))
+        {
+            SpawnArtifacts((int)mousePos.x, (int)mousePos.y, 2);
+            //this.GetComponent<ArtifactSpawner>().SpawnArtifacts((int)mousePos.x,(int)mousePos.y,2);
+        }
+    }
+    public void SpawnArtifacts(float x, float y, int amount)
+    {
+        float xRange = x + Random.Range(-0.5f, 0.5f);
+        float yRange = y + Random.Range(-0.5f, 0.5f);
+        Vector2 spownPosition = new Vector2(xRange, yRange);
+        GameObject artifact = Instantiate(sprite[Random.Range(0, sprite.Length - 1)], spownPosition, Quaternion.identity);
+        artifact.transform.localScale = (artifact.transform.localScale + this.transform.localScale) / 5f;
 
     }
     /*void KinematicStop()
@@ -87,6 +100,9 @@ public class PlayerControll : MonoBehaviour
             MyGameManager.ScoreUp(10);
             playerExp += 1;
             rb.transform.localScale += new Vector3(0.005f,0.005f,0);
+            Debug.Log(cam.orthographicSize);
+            cam.orthographicSize += 0.05f;
+            Debug.Log("DAS IST TEST");
             if (expRequiredForLeveling == playerExp)
             {
                 

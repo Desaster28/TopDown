@@ -45,7 +45,7 @@ public class SpeedEnemy : MonoBehaviour
         //if (other.GetType() == typeof(CircleCollider2D))
         //{ Debug.Log("AHALL"); }
 
-        Debug.LogWarning(other.tag);
+        //Debug.LogWarning(other.tag);
         if (other.CompareTag("Player"))
         {
             player.damageIntake(5);
@@ -54,10 +54,10 @@ public class SpeedEnemy : MonoBehaviour
         }
         if (other.CompareTag("Fire"))
         {
-            Debug.Log("HOWMANY");
+            //Debug.Log("HOWMANY");
             Destroy(other.gameObject);
             //other.GetComponent<Shoting>().DestroyBullet();
-            Debug.Log("HOWMANY2");
+           // Debug.Log("HOWMANY2");
             KillCurentEnemy();
             MyGameManager.ScoreUp(50);
 
