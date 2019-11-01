@@ -41,7 +41,7 @@ public class PlayerControll : MonoBehaviour
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Time.timeScale = 0;
         }
-        else{rb.transform.localScale -= new Vector3(0.005f, 0.005f, 0);}
+        else rb.transform.localScale -= new Vector3(0.005f, 0.005f, 0);
         //rb.transform.localScale *= 0.01f;//
         
         if (health < 1)
