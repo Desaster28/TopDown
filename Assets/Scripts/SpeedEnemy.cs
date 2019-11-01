@@ -15,7 +15,7 @@ public class SpeedEnemy : MonoBehaviour
     public GameObject[] sprite;
     public Transform Player;
     public GameManager MyGameManager;
-
+    public bool isColliding;
     private void Start()
     {
         rbe = GetComponent<Rigidbody2D>();
@@ -28,6 +28,7 @@ public class SpeedEnemy : MonoBehaviour
     
     void Update()
     {
+        isColliding = false;
     }
     private void FixedUpdate()
     {
@@ -48,12 +49,19 @@ public class SpeedEnemy : MonoBehaviour
         //Debug.LogWarning(other.tag);
         if (other.CompareTag("Player"))
         {
+            
             player.damageIntake(5);
             KillCurentEnemy();
             MyGameManager.ScoreUp(50);
+            Debug.Log("Ich bin in Player");
+
         }
         if (other.CompareTag("Fire"))
         {
+            if (isColliding) return;
+            isColliding = true;
+            Debug.Log("Ich bin in Fire");
+
             //Debug.Log("HOWMANY");
             Destroy(other.gameObject);
             //other.GetComponent<Shoting>().DestroyBullet();

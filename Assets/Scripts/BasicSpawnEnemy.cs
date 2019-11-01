@@ -16,6 +16,7 @@ public class BasicSpawnEnemy : MonoBehaviour
     private Rigidbody2D rbe;
     private CircleCollider2D colider;
     private float radius;
+    public bool isColliding;
 
     private void Start()
     {

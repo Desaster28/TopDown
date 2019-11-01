@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
     private Rigidbody2D rbe;
     public GameObject[] sprite;
-    public Spawner spawnerScript;
+    public bool isColliding;
+
     private void Start()
     {
         rbe = GetComponent<Rigidbody2D>();
@@ -44,21 +45,29 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             if (health < 1)
             {
-                KillCurentEnemy();     
+                KillCurentEnemyWithArtifact();     
             }
             else{}
         }
     }
 
-    private void KillCurentEnemy()
+    private void KillCurentEnemyWithArtifact()
     {
         SpawnArtifacts(rbe.position.x,rbe.position.y,1);
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         //spawnerScript.EnemyCountDecrease();  
        
-    }       
-    
+    }
+    private void KillCurentEnemy()
+    {
+        //SpawnArtifacts(rbe.position.x, rbe.position.y, 1);
+        Destroy(gameObject);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //spawnerScript.EnemyCountDecrease();  
+
+    }
+
     public void SpawnArtifacts(float x, float y, int amount)
     {   
         float xRange = x + Random.Range(-0.5f, 0.5f);

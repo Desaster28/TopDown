@@ -101,7 +101,7 @@ public class PlayerControll : MonoBehaviour
             playerExp += 1;
             rb.transform.localScale += new Vector3(0.005f,0.005f,0);
             Debug.Log(cam.orthographicSize);
-            cam.orthographicSize += 0.05f;
+            cam.orthographicSize += 0.025f;
             Debug.Log("DAS IST TEST");
             if (expRequiredForLeveling == playerExp)
             {
