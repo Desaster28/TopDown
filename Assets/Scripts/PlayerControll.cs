@@ -67,11 +67,11 @@ public class PlayerControll : MonoBehaviour
         }
         else
         {
-            rb.transform.localScale -= new Vector3(0.0075f, 0.0075f, 0);
+            rb.transform.localScale -= new Vector3(0.0150f, 0.0150f, 0);
             Debug.Log(cam.orthographicSize);
             //cam.orthographicSize -= Mathf.Lerp(cam.orthographicSize,0.100f,5);
             elapsed += Time.deltaTime / duration;
-           StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.100f, 0.5f));
+           StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.0750f, 0.5f));
         }
         //rb.transform.localScale *= 0.01f;//
         
