@@ -2523,6 +2523,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4934769905278851607, guid: 4bb6cfed520e04b448b24aacf83ce09f,
     type: 3}
   sound: {fileID: 2039202276}
+  player: {fileID: 5397032378174948204}
   bulletForce: 20
 --- !u!95 &2039202278
 Animator:
@@ -3112,10 +3113,6 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   deathEffect: {fileID: 2309245943779142146, guid: 2428b16aeb22de84185c5011196f0ab8,
     type: 3}
-  playerLevel: 1
-  playerExp: 0
-  expRequiredForLeveling: 10
-  maxLevel: 0
   moveInput: {x: 0, y: 0}
   MyGameManager: {fileID: 1646484009}
   healthBar: {fileID: 2065393181}
@@ -3131,6 +3128,11 @@ MonoBehaviour:
   - {fileID: 1119413086496894972, guid: 9429f32db9810344bbc9d12ec2762e99, type: 3}
   - {fileID: 805304604870095302, guid: 2bb0d6ad341b4274699e7743050ed080, type: 3}
   duration: 1
+  shotingScript: {fileID: 2039202277}
+  playerLevel: 1
+  playerExp: 0
+  expRequiredForLeveling: 10
+  maxLevel: 0
 --- !u!50 &5397032378174948205
 Rigidbody2D:
   serializedVersion: 4

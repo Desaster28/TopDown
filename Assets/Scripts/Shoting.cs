@@ -7,8 +7,15 @@ public class Shoting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public AudioSource sound;
+    public PlayerControll player;
     public float bulletForce = 20f;
-    // Update is called once per frame
+
+    //private Rigidbody2D rb;
+
+    private void Start()
+    {
+        bulletPrefab.GetComponent<Rigidbody2D>().transform.localScale = player.transform.localScale / 7;
+    }
     void Update()
     {
         if (Time.timeScale == 0)
@@ -28,5 +35,12 @@ public class Shoting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb= bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+
+        player.DecreaseSize();
+    }
+
+    public void DecreaseBulletSize()
+    {
+        bulletPrefab.GetComponent<Rigidbody2D>().transform.localScale = player.transform.localScale / 7;
     }
 }

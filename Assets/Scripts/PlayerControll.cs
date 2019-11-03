@@ -14,17 +14,19 @@ public class PlayerControll : MonoBehaviour
     public Camera cam;
     Vector2 mousePos;    
     public GameObject deathEffect;
-    [Header("Leveling")]
-    public int playerLevel = 1;
-    public int playerExp = 0;
-    public int expRequiredForLeveling = 10;
-    public int maxLevel;
-    public  Vector2 moveInput;
+    public Vector2 moveInput;
     public GameManager MyGameManager;
     public Slider healthBar;
     public GameObject[] sprite;
     public float duration = 1.0f;
     private float elapsed = 0.0f;
+    public Shoting shotingScript;
+    [Header("Leveling")]
+    public int playerLevel = 1;
+    public int playerExp = 0;
+    public int expRequiredForLeveling = 10;
+    public int maxLevel;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,14 @@ public class PlayerControll : MonoBehaviour
 
         health -= i;
         healthBar.value = health;
+
+
+        DecreaseSize();
+
+    }
+
+    public void DecreaseSize()
+    {
         if (rb.transform.localScale.x <= 0.001)
         {
             Debug.Log("Death");
@@ -71,19 +81,20 @@ public class PlayerControll : MonoBehaviour
             Debug.Log(cam.orthographicSize);
             //cam.orthographicSize -= Mathf.Lerp(cam.orthographicSize,0.100f,5);
             elapsed += Time.deltaTime / duration;
-           StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.0750f, 0.5f));
+            StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.0750f, 0.5f));
+
+            shotingScript.DecreaseBulletSize();
         }
         //rb.transform.localScale *= 0.01f;//
-        
+
         if (health < 1)
         {
-            
+
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            
+
         }
-
-
     }
+
     // Update is called once per frame
     void Update()
     {
