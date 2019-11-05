@@ -26,7 +26,9 @@ public class PlayerControll : MonoBehaviour
     public int playerExp = 0;
     public int expRequiredForLeveling = 10;
     public int maxLevel;
-    
+    public PauseMenu ourPmenu;
+    public GameOver ourGameOverMenu;
+    public bool GameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +73,24 @@ public class PlayerControll : MonoBehaviour
 
     public void DecreaseSize()
     {
-        if (rb.transform.localScale.x <= 0.010)
+        if (rb.transform.localScale.x <= 0.040)
         {
-            Debug.Log("Death");
+            Debug.Log("Death");            
+            ourGameOverMenu.SetGameOver();
+            ourPmenu.SetGameOver();
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Wait(0.50f, () => { MyGameManager.EndGame(); });
+
+                        
+            this.gameObject.GetComponent<SpriteRenderer>().enabled= false;
+            this.gameObject.GetComponent<CircleCollider2D>().enabled=false;
+            
+
+            Wait(0.2f, () => { MyGameManager.EndGame(); 
+            
+            
+            
+            });
+
         }
         else
         {

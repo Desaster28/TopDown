@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     // Start is called before the first frame update
+        public bool gameOver = false;
+        public void SetGameOver()
+    {
+        gameOver = true;
+    }
     public void LoadMenu()
     {
 

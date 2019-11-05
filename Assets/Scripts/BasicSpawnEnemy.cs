@@ -103,13 +103,13 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     }
 
-    // private void OnCollisionEnter2D(Collision2D other) 
-    // {
-    //     var magnitude = 1000;
-    //     var force = transform.position - other.transform.position;
-    //     force.Normalize();
-    //     gameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);       
-    // }
+     private void OnCollisionEnter2D(Collision2D other) 
+     {
+         var magnitude = 700;
+         var force = transform.position - other.transform.position;
+         force.Normalize();
+         gameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);       
+     }
 
     private void SpownBssicEnemy(float x, float y, int amountOfEnemiesToSpawn)
     {
@@ -125,6 +125,7 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     private void OnCollisionWithPlayer()
     {
+        player.damageIntake(1);
         // float playerRadius = playerPos.GetComponent<CircleCollider2D>().radius;
         // float sum = radius + playerRadius;
         // float playerPercentage = (playerRadius * 100) / sum;
