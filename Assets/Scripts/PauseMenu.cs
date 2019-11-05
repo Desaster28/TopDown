@@ -6,11 +6,20 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool esc = false;
     public GameObject PauseMenuUI;
-
-
+    public bool GameOver;
+    private void Start()
+    {
+        GameOver = false;
+    }
     // Update is called once per frame
+    public void SetGameOver()
+    {
+        GameOver = true;
+    }
     void Update()
     {
+        if (GameOver == true)
+            return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (esc)
