@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 874617938945949776}
   - component: {fileID: 7639456093487704643}
   - component: {fileID: 7281678664093137924}
+  - component: {fileID: -1517109391595237004}
   m_Layer: 0
-  m_Name: fire
-  m_TagString: Fire
+  m_Name: EnemyBullet
+  m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4934769905278851607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.9743824, y: -0.58219016, z: 0}
-  m_LocalScale: {x: 0.020108258, y: 0.020196427, z: 0.14285715}
+  m_LocalScale: {x: 0.022710059, y: 0.025746092, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0737fe99e0542c743ab9092fad8fb688, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5188679, g: 0.28635636, b: 0.28635636, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.19999981}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.912958, y: 13.445503}
+  m_Size: {x: 3.9, y: 12.48}
   m_EdgeRadius: 0
 --- !u!114 &7281678664093137924
 MonoBehaviour:
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca40c11f25fcd4438a300ed3cafcf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1517109391595237004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934769905278851607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd9f68eb2f15bb49b17b6eade087b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  damagePerHit: 1

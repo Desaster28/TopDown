@@ -87,12 +87,7 @@ public class PlayerControll : MonoBehaviour
         }
         //rb.transform.localScale *= 0.01f;//
 
-        if (health < 1)
-        {
 
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-
-        }
     }
 
     // Update is called once per frame
