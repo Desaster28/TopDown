@@ -8,13 +8,22 @@ public class GUIManager : MonoBehaviour
 
     public Text scoreTxt;
     public Text countTimer;
-    public Image[] healthP;
-    public Image[] healthM;
-    public TextMesh txt;
+    public Text GameOverText;
+    public Text highscoreTxt;
+
     // Start is called before the first frame update
     public void setScore(string score){
         scoreTxt.text = "Score: "+ score;
     }
+    public void setDisplayScore(string score)
+    {
+        GameOverText.text = "Your Score: " + score;
+    }
+    public void setDisplayHighScore(string highscore)
+    {
+        highscoreTxt.text = "Highscore: " + highscore;
+    }
+    
     public void setTime(string time)
     {
         countTimer.text = time + "";

@@ -9,6 +9,8 @@ TagManager:
   - PickUp
   - Speed Enemy
   - GameManager
+  - Enemy Bullet
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX

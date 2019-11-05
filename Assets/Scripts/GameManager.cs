@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     private PlayerControll player;
     private float currTime;
     private float startTime;
-
-
+    private int highscore;
+    public GameObject GameOver;
    // Start is called before the first frame update
     private void Start()
     {
@@ -21,15 +21,31 @@ public class GameManager : MonoBehaviour
         score = 0;
         MyGUIManager.setScore(score.ToString());
         currTime = 0f;
+        highscore = PlayerPrefs.GetInt("Highscore");
     }
     public void EndGame(){
         Debug.Log("GAMEENDED");
+        if (score > highscore)
+        {
+            highscore = score;
+        }
+        PlayerPrefs.SetInt("Highscore", highscore);
+        
+        MyGUIManager.setDisplayScore(score.ToString());
+        MyGUIManager.setDisplayHighScore(highscore.ToString());
+        
+
         Time.timeScale = 0;
+        GameOver.SetActive(true);
     }
     
     // Update is called once per frame
     private void Update()
     {
+        if (score > highscore)
+        {
+            highscore = score;
+        }
         float t = Time.time - startTime;
         string minutes = ((int)t / 60).ToString("00");
         string seconds;

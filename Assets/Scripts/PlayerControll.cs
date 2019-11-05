@@ -26,11 +26,14 @@ public class PlayerControll : MonoBehaviour
     public int playerExp = 0;
     public int expRequiredForLeveling = 10;
     public int maxLevel;
-    
+    public bool GameOver;
+    public PauseMenu ourPMenu;
     // Start is called before the first frame update
     void Start()
     {
+        GameOver = false;
         rb = GetComponent<Rigidbody2D>();
+
         //WE DONT USE HEALTH SYSTEM ANYMORE 
 
         // health = 100;
@@ -75,6 +78,7 @@ public class PlayerControll : MonoBehaviour
         {
             Debug.Log("Death");
             Instantiate(deathEffect, transform.position, Quaternion.identity);
+            ourPMenu.SetGameOver();
             Wait(0.50f, () => { MyGameManager.EndGame(); });
         }
         else
