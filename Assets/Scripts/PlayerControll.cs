@@ -16,7 +16,7 @@ public class PlayerControll : MonoBehaviour
     public GameObject deathEffect;
     public Vector2 moveInput;
     public GameManager MyGameManager;
-    public Slider healthBar;
+    //public Slider healthBar;
     public GameObject[] sprite;
     public float duration = 1.0f;
     private float elapsed = 0.0f;
@@ -61,8 +61,8 @@ public class PlayerControll : MonoBehaviour
     public void damageIntake(int i)
     {
 
-        health -= i;
-        healthBar.value = health;
+        //health -= i;
+        //healthBar.value = health;
 
 
         DecreaseSize();
