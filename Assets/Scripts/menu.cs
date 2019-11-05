@@ -7,7 +7,7 @@ public class menu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TesterForHighScore");
     }
 
     public void QuitGame()

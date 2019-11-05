@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame(){
         Debug.Log("GAMEENDED");
+        Time.timeScale = 0;
     }
     
     // Update is called once per frame

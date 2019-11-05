@@ -30,10 +30,12 @@ public class PlayerControll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Unser Health is " + health);
-        healthBar.value = health;
+        //WE DONT USE HEALTH SYSTEM ANYMORE 
+
+        // health = 100;
+        // Debug.Log("Unser Health is " + health);
+        // healthBar.value = health;
     }
     public void Wait(float seconds, Action action)
     {
@@ -69,11 +71,11 @@ public class PlayerControll : MonoBehaviour
 
     public void DecreaseSize()
     {
-        if (rb.transform.localScale.x <= 0.001)
+        if (rb.transform.localScale.x <= 0.010)
         {
             Debug.Log("Death");
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Wait(0.50f, () => { Time.timeScale = 0; });
+            Wait(0.50f, () => { MyGameManager.EndGame(); });
         }
         else
         {
@@ -81,9 +83,9 @@ public class PlayerControll : MonoBehaviour
             Debug.Log(cam.orthographicSize);
             //cam.orthographicSize -= Mathf.Lerp(cam.orthographicSize,0.100f,5);
             elapsed += Time.deltaTime / duration;
-            StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.0750f, 0.5f));
+            StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize - 0.1500f, 0.5f));
 
-            shotingScript.DecreaseBulletSize();
+            //shotingScript.DecreaseBulletSize();
         }
         //rb.transform.localScale *= 0.01f;//
 
@@ -138,7 +140,7 @@ public class PlayerControll : MonoBehaviour
             playerExp += 1;
             rb.transform.localScale += new Vector3(0.005f,0.005f,0);
             Debug.Log(cam.orthographicSize);
-            cam.orthographicSize += 0.025f;
+            cam.orthographicSize += 0.150f;
             /*Debug.Log("DAS IST TEST");
             if (expRequiredForLeveling == playerExp)
             {
