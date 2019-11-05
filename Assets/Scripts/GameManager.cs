@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
         MyGUIManager.setScore(score.ToString());
         currTime = 0f;
     }
-
+    public void EndGame(){
+        Debug.Log("GAMEENDED");
+    }
     
     // Update is called once per frame
     private void Update()

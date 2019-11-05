@@ -15,11 +15,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using CodeMonkey.Utils;
 using TMPro;
 
-public class SubmitScore : MonoBehaviour {
+public class UI_InputWindow : MonoBehaviour {
 
-    private static SubmitScore instance;
+    private static UI_InputWindow instance;
 
     private Button_UI okBtn;
     private Button_UI cancelBtn;
