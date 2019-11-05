@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  health: 6
+  health: 8
   spawnEnemies: 3
   deathEffect: {fileID: 2309245943779142146, guid: 65b82e9ddf6431a4aa03c564279518a5,
     type: 3}
@@ -152,6 +152,7 @@ MonoBehaviour:
   - {fileID: 1119413086496894972, guid: 9429f32db9810344bbc9d12ec2762e99, type: 3}
   - {fileID: 805304604870095302, guid: 2bb0d6ad341b4274699e7743050ed080, type: 3}
   isColliding: 0
+  MyGameManager: {fileID: 0}
 --- !u!58 &6882647014158599672
 CircleCollider2D:
   m_ObjectHideFlags: 0

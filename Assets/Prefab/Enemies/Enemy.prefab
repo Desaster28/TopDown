@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1467130910778311111
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.33
-  health: 2
+  health: 3
   deathEffect: {fileID: 2309245943779142146, guid: 6b556e3381350f44c873ebe970f24538,
     type: 3}
   sprite:

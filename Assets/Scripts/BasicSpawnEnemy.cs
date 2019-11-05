@@ -31,6 +31,7 @@ public class BasicSpawnEnemy : MonoBehaviour
     }
     void Update()
     {
+        isColliding = false;
             //transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
         
 
@@ -57,6 +58,8 @@ public class BasicSpawnEnemy : MonoBehaviour
         if (other.CompareTag("Fire"))
         {
             health--;
+            if (isColliding) return;
+            isColliding = true;
             Destroy(other.gameObject);
             if (health < 1)
             {
@@ -69,7 +72,7 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     private void KillCurentEnemyWithArtifact()
     {
-        SpawnArtifacts(rbe.position.x, rbe.position.y, 3);
+        SpawnArtifacts(rbe.position.x, rbe.position.y, Random.Range(2,5));
         SpownBssicEnemy(rbe.position.x, rbe.position.y, spawnEnemies);
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -100,13 +103,13 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        var magnitude = 1000;
-        var force = transform.position - other.transform.position;
-        force.Normalize();
-        gameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);       
-    }
+    // private void OnCollisionEnter2D(Collision2D other) 
+    // {
+    //     var magnitude = 1000;
+    //     var force = transform.position - other.transform.position;
+    //     force.Normalize();
+    //     gameObject.GetComponent<Rigidbody2D>().AddForce(force * magnitude);       
+    // }
 
     private void SpownBssicEnemy(float x, float y, int amountOfEnemiesToSpawn)
     {
@@ -122,31 +125,31 @@ public class BasicSpawnEnemy : MonoBehaviour
 
     private void OnCollisionWithPlayer()
     {
-        float playerRadius = playerPos.GetComponent<CircleCollider2D>().radius;
-        float sum = radius + playerRadius;
-        float playerPercentage = (playerRadius * 100) / sum;
-        float enemyPercentage = (radius * 100) / sum;
-        float difference = playerPercentage - enemyPercentage;
+        // float playerRadius = playerPos.GetComponent<CircleCollider2D>().radius;
+        // float sum = radius + playerRadius;
+        // float playerPercentage = (playerRadius * 100) / sum;
+        // float enemyPercentage = (radius * 100) / sum;
+        // float difference = playerPercentage - enemyPercentage;
 
-        if(playerPercentage >= 70)
-        {
-            KillCurentEnemy();
-        }
-        else
-        {
-            health--;
-            player.damageIntake(1);
-        }
-            
-        // else if (playerPercentage < enemyPercentage)
+        // if(playerPercentage >= 70)
         // {
-        //     Debug.Log("Enemy");
-        //     Debug.Log("Damage: " + Mathf.RoundToInt(enemyPercentage / 10));
-        //     player.damageIntake(Mathf.RoundToInt(enemyPercentage / 10));
+        //     KillCurentEnemy();
         // }
         // else
         // {
-        //     health -= Mathf.RoundToInt(playerPercentage / 10);
+        //     health--;
+        //     player.damageIntake(1);
         // }
+            
+        // // else if (playerPercentage < enemyPercentage)
+        // // {
+        // //     Debug.Log("Enemy");
+        // //     Debug.Log("Damage: " + Mathf.RoundToInt(enemyPercentage / 10));
+        // //     player.damageIntake(Mathf.RoundToInt(enemyPercentage / 10));
+        // // }
+        // // else
+        // // {
+        // //     health -= Mathf.RoundToInt(playerPercentage / 10);
+        // // }
     }
 }

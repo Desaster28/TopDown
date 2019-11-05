@@ -108,11 +108,11 @@ public class PlayerControll : MonoBehaviour
             //Invoke("KinematicOn", 0.1f);
         }
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetKey(KeyCode.E))
-        {
-            SpawnArtifacts((int)mousePos.x, (int)mousePos.y, 2);
-            //this.GetComponent<ArtifactSpawner>().SpawnArtifacts((int)mousePos.x,(int)mousePos.y,2);
-        }
+        // if (Input.GetKey(KeyCode.E))
+        // {
+        //     SpawnArtifacts((int)mousePos.x, (int)mousePos.y, 2);
+        //     //this.GetComponent<ArtifactSpawner>().SpawnArtifacts((int)mousePos.x,(int)mousePos.y,2);
+        // }
     }
     public void SpawnArtifacts(float x, float y, int amount)
     {
@@ -140,7 +140,8 @@ public class PlayerControll : MonoBehaviour
             playerExp += 1;
             rb.transform.localScale += new Vector3(0.005f,0.005f,0);
             Debug.Log(cam.orthographicSize);
-            cam.orthographicSize += 0.150f;
+            StartCoroutine(resizeRoutine(cam.orthographicSize, cam.orthographicSize + 0.1500f, 0.5f));
+           //cam.orthographicSize += 0.150f;
             /*Debug.Log("DAS IST TEST");
             if (expRequiredForLeveling == playerExp)
             {

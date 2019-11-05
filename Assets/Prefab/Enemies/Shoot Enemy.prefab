@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 2
+  health: 4
   deathEffect: {fileID: 2309245943779142146, guid: 6b556e3381350f44c873ebe970f24538,
     type: 3}
   sprite: []
